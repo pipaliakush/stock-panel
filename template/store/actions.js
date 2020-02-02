@@ -1,25 +1,20 @@
 import { request } from '@/store/api.js';
+import { getPortFolioData } from '@/util/index.js';
 
 export default {
 	getStocksList({ commit }) {
-		commit('isLoading', true)
 		return request(this.$axios, 'get', 'https://work.setu.co/assignments/stock-ui/stocks').then(response => {
-			console.log('u87587897698479')
-			console.log(response);
-			commit('isLoading', false)
 			commit('getStocksList', response);
-		}).catch(error => {
-			console.log('++++++++++')
-			console.log(error.response.status);
-		})
+		}).catch(() => { })
 	},
-	addEmployee({ dispatch }, data) {
-		return request(this.$axios, 'post', 'http://dummy.restapiexample.com/api/v1/create', data)
+	async getPortfolio({ commit }) {
+		const res = await getPortFolioData(this.$axios)
+		commit('getPortfolio', res)
 	},
-	updateEmployee({ dispatch }, { id, employeeForm }) {
-		return request(this.$axios, 'put', `http://dummy.restapiexample.com/api/v1/update/${id}`, employeeForm)
+	buyStocks({ dispatch }, data) {
+		return request(this.$axios, 'post', 'https://work.setu.co/assignments/stock-ui/admin/buy', data)
 	},
-	deleteEmployee({ dispatch }, id) {
-		return request(this.$axios, 'delete', `http://dummy.restapiexample.com/api/v1/delete/${id}`)
-	}
+	sellStocks({ dispatch }, data) {
+		return request(this.$axios, 'post', 'https://work.setu.co/assignments/stock-ui/admin/sell', data)
+	},
 }

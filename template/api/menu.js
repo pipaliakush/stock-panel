@@ -7,10 +7,10 @@ const Menu = [
     href: '/'
   },
   {
-    title: 'Chat',
+    title: 'Portfolio',
     group: 'apps',
     icon: 'person',
-    name: 'Chat',
+    name: 'Portfolio',
     href: '/portfolio'
   }
 ];
