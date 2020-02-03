@@ -1,4 +1,12 @@
+import { request } from '@/store/api.js';
 
+export function getPortFolioData(axios) {
+  return request(axios, 'get', 'https://work.setu.co/assignments/stock-ui/admin/portfolio').then(response => {
+    return response
+  }).catch(() => {
+    return getPortFolioData(axios)
+  })
+}
 // export function camel (str) {
 //   const camel = (str || '').replace(/-([^-])/g, g => g[1].toUpperCase());
 
@@ -47,7 +55,7 @@ const randomElement = (arr = []) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-const kebab =  (str) => {
+const kebab = (str) => {
   return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 };
 

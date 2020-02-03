@@ -1,18 +1,23 @@
 <template>
   <v-container grid-list-xl fluid>
-    <h4>
-      <i class="fa fa-smile-o"></i>
-      Hi there, this an empty page.</h4>
+    <Portfolio />
   </v-container>
 </template>
 
 <script>
-  export default {
-    layout: "dashboard",
+import Portfolio from '@/components/Portfolio/index.vue';
 
+export default {
+  components: { Portfolio },
+  layout: 'dashboard',
+  async asyncData({ store }) {
+    await store
+      .dispatch('getPortfolio')
+      .then(() => {})
+      .catch(() => {});
   }
+};
 </script>
 
 <style scoped>
-
 </style>
