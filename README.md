@@ -1,10 +1,14 @@
 # stock-dashboard
 
-> My majestic Nuxt.js project
+> My Stock panel project
 
 ## Build Setup
 
+
+
 ``` bash
+#go to the template folder then follow the following command
+
 # install dependencies
 $ npm run install
 
